@@ -13,8 +13,7 @@ class MultiArmedBandit:
         """
         self.num_arms = num_arms
         self.means = means
-        self.stds = stds
-        
+        self.stds = stds   
 
     def pull_arm(self, arm: int) -> float:
         """
@@ -24,5 +23,5 @@ class MultiArmedBandit:
 
         Return the reward (drawn from normal distribution)
         """
-        reward = np.random.normal(loc= self.means[arm], scale= self.stds[arm])
-        return reward
+
+        return np.random.normal(loc= self.means[arm],scale= self.stds[arm])

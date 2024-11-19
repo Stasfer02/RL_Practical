@@ -2,7 +2,7 @@
 Implementation of the Upper Confidence Bound (UCB) policy.
 """
 
-from abstract_policy import Policy
+from policies.abstract_policy import Policy
 import numpy as np
 
 class UCB(Policy):
