@@ -1,4 +1,6 @@
-
+"""
+Abstract base class for all the policies.
+"""
 from abc import ABC, abstractmethod
 
 
@@ -14,7 +16,7 @@ class Policy(ABC):
         """
         pass
 
-    def update(self, arm, reward) -> None:
+    def update(self, arm: int, reward: float) -> None:
         """
         Update q-values.
         """

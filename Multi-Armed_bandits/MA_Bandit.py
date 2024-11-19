@@ -2,11 +2,12 @@
 This is the Multi-Armed bandit class. 
 """
 
+from typing import List
 import numpy as np
 
 
 class MultiArmedBandit:
-    def __init__(self, num_arms, means, stds):
+    def __init__(self, num_arms: int, means: List[float], stds: List[float]):
         """
         take in the number of arms and the corresponding lists for mean and STD values (created in main)
         """
@@ -15,7 +16,7 @@ class MultiArmedBandit:
         self.stds = stds
         
 
-    def pull_arm(self, arm):
+    def pull_arm(self, arm: int) -> float:
         """
         Specific arm is pulled. 
 
