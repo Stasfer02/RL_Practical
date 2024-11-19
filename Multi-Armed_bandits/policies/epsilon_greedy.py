@@ -1,18 +1,23 @@
+"""
+Implementation of the epsilon-greedy policy
+"""
+
 from abstract_policy import Policy
 import numpy as np
 
 class Epsilon_Greedy(Policy):
     """
-    Epsilon greedy action-selection algorithm.
+    Epsilon greedy action-selection.
     """
-    def __init__(self, epsilon, num_arms):
+    def __init__(self, epsilon: float, num_arms: int):
         
         self.epsilon = epsilon
         self.num_arms = num_arms
         self.q_values = np.zeros(num_arms)
+        self.arm_cnts = np.zeros(num_arms)
 
     
-    def select_action(self):
+    def select_action(self) -> int:
         # random value between 0 and 1
         i = np.random.rand()
 
@@ -25,6 +30,8 @@ class Epsilon_Greedy(Policy):
         
         return action
     
-    def update(self, arm, reward):
-        # TODO
-        pass
+    def update(self, arm: int, reward: float) -> None:
+        self.arm_cnts[arm] += 1
+
+        # update corresponding Q-value using Sample-average method.
+        self.q_values[arm] += (reward - self.q_values[arm]) / self.arm_cnts[arm]
