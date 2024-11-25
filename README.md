@@ -3,4 +3,4 @@ members:
 - Stan Ferguson (S4674367)
 - Natalie	Mladenova (s5161517)
 - Bianca	Raetchi (S4755138)
-- Ivan	Hegeman (?)
+  
