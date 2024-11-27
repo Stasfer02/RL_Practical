@@ -25,6 +25,7 @@ df_rewards = pd.DataFrame()
 
 np.random.seed(42)
 
+final_plot = pd.DataFrame(columns=[str(x['policy']) for x in config])
 for p in range(len(config)):
     bandit_means = np.random.normal(loc= 0, scale= 1,size= num_arms).tolist()
     bandit_stds = [1] * num_arms
@@ -32,7 +33,7 @@ for p in range(len(config)):
     bandit = MultiArmedBandit(num_arms, bandit_means, bandit_stds)
     
 
-    final_plot = []
+    p_plot = []
 
     for x in x_values:
         print({config[p].get('custom'):x})
@@ -44,15 +45,15 @@ for p in range(len(config)):
             policy.update(action,reward)
 
             reward_list.append(reward)
-        final_plot.append(pd.DataFrame(reward_list).mean())
+        p_plot.append(pd.DataFrame(reward_list).mean())
+    final_plot[str(config[p].get('policy'))]=p_plot
     
-    
-    plt.figure()
-    plt.plot(x_values,final_plot)
-    plt.xlabel("Hyperparameter Value")
-    plt.ylabel("Average Reward")
-    plt.title("Evaluation of Exploration Methods on 10-Armed Bandit")
-    plt.legend()
+plt.figure()
+plt.plot(x_values,final_plot)
+plt.xlabel("Hyperparameter Value")
+plt.ylabel("Average Reward")
+plt.title("Evaluation of Exploration Methods on 10-Armed Bandit")
+plt.legend()
 
-    plt.grid(True, linestyle="--", alpha=0.6)
-    plt.show()
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.show()

@@ -30,3 +30,6 @@ class Greedy(Policy):
         # update Q-value using the Weighted-Average method.
         self.q_values[arm] += self.learning_rate * (reward - self.q_values[arm])
         pass
+
+    def __str__(self) -> str:
+        return "Greedy"

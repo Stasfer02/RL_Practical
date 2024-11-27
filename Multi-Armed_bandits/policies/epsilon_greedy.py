@@ -35,3 +35,6 @@ class Epsilon_Greedy(Policy):
 
         # update corresponding Q-value using Sample-average method.
         self.q_values[arm] += (reward - self.q_values[arm]) / self.arm_cnts[arm]
+
+    def __str__(self) -> str:
+        return "Epsilon-greedy"

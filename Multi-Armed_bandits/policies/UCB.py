@@ -31,3 +31,6 @@ class UCB(Policy):
 
         self.q_values[arm] = (reward - self.q_values[arm]) / self.arm_cnts[arm]
         pass
+
+    def __str__(self) -> str:
+        return "UCB"
