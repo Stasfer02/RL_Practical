@@ -16,6 +16,7 @@ config = [{'policy': Greedy, 'custom':'learning_rate'},
           {'policy':UCB, 'custom':'conf_level'},
           {'policy':Softmax, 'custom':'temperature'}]
 x_values = [1/128, 1/64, 1/32, 1/16, 1/8, 1/4, 1/2, 1, 2, 4]
+x_values_str = ["1/128", "1/64", "1/32", "1/16", "1/8", "1/4", "1/2", "1", "2", "4"]
 
 # amount of timesteps per run
 t_steps = 1000
@@ -49,7 +50,7 @@ for p in range(len(config)):
     final_plot[str(config[p].get('policy'))]=p_plot
     
 plt.figure()
-plt.plot(x_values,final_plot)
+plt.plot(x_values_str,final_plot)
 plt.xlabel("Hyperparameter Value")
 plt.ylabel("Average Reward")
 plt.title("Evaluation of Exploration Methods on 10-Armed Bandit")
