@@ -12,8 +12,6 @@ class UCB(Policy):
         self.total_cnt = 0
         self.q_values = np.zeros(num_arms)
         self.arm_cnts = np.zeros(num_arms)
-        
-
     
     def select_action(self) -> int:
 
@@ -32,5 +30,6 @@ class UCB(Policy):
         self.q_values[arm] = (reward - self.q_values[arm]) / self.arm_cnts[arm]
         pass
 
-    def __str__(self) -> str:
+    @staticmethod
+    def __str__() -> str:
         return "UCB"

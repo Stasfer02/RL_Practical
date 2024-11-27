@@ -26,13 +26,13 @@ df_rewards = pd.DataFrame()
 
 np.random.seed(42)
 
-final_plot = pd.DataFrame(columns=[str(x['policy']) for x in config])
+final_plot = pd.DataFrame(columns=[x['policy'].__str__() for x in config])
+
 for p in range(len(config)):
     bandit_means = np.random.normal(loc= 0, scale= 1,size= num_arms).tolist()
     bandit_stds = [1] * num_arms
 
     bandit = MultiArmedBandit(num_arms, bandit_means, bandit_stds)
-    
 
     p_plot = []
 
@@ -50,7 +50,8 @@ for p in range(len(config)):
     final_plot[str(config[p].get('policy'))]=p_plot
     
 plt.figure()
-plt.plot(x_values_str,final_plot)
+for p in config:
+    plt.plot(x_values_str,final_plot[str(p['policy'])], label=p['policy'].__str__())
 plt.xlabel("Hyperparameter Value")
 plt.ylabel("Average Reward")
 plt.title("Evaluation of Exploration Methods on 10-Armed Bandit")

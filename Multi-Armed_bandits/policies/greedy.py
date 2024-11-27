@@ -31,5 +31,6 @@ class Greedy(Policy):
         self.q_values[arm] += self.learning_rate * (reward - self.q_values[arm])
         pass
 
-    def __str__(self) -> str:
+    @staticmethod
+    def __str__() -> str:
         return "Greedy"

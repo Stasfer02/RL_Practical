@@ -32,5 +32,6 @@ class Softmax(Policy):
         # Update Q-value using Sample-Average method.
         self.q_values[arm] += (reward - self.q_values[arm]) / self.arm_cnts[arm]
 
-    def __str__(self) -> str:
+    @staticmethod
+    def __str__() -> str:
         return "SoftMax"
